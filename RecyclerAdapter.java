@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
 
         viewHolder.name.setText(name);
         viewHolder.number.setText(list.getPhone());
+
+        try {
+            viewHolder.imageView.setImageBitmap(list.getImage());
+
+
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -78,6 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageV
                 this.setIsRecyclable(false);
                 name = (TextView) itemView.findViewById(R.id.name);
                 number = (TextView) itemView.findViewById(R.id.number);
+                imageView=(ImageView) itemView.findViewById(R.id.img);
 
 
             }
